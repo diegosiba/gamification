@@ -46,7 +46,7 @@ public class TarefaDAO extends CustomDAO<Tarefa> {
                     + "(default,"
                     + "'" + tarefa.getTitulo() + "',"
                     + "'" + tarefa.getDescricao() + "',"
-                    + "'" + tarefa.getDicas() + "',"
+                    + "'" + tarefa.getVideo() + "',"
                     + "'" + tarefa.getPontosVale() + "',"
                     + "'" + tarefa.getCodNivel() + "',"
                     + "'" + tarefa.getCodModulo() + "',"
@@ -71,7 +71,7 @@ public class TarefaDAO extends CustomDAO<Tarefa> {
             sql = "update " + this.Tabela() + " set "
                     + Consts.COL_TITULO + " = '" + tarefa.getTitulo() + "', "
                     + Consts.COL_DESCRICAO + " = '" + tarefa.getDescricao() + "', "
-                    + Consts.COL_DICAS + " = '" + tarefa.getDicas() + "', "
+                    + Consts.COL_DICAS + " = '" + tarefa.getVideo()+ "', "
                     + Consts.COL_PONTOS_VALE + " = '" + tarefa.getPontosVale() + "', "
                     + Consts.COL_COD_NIVEL + " = '" + tarefa.getCodNivel() + "', "
                     + Consts.COL_COD_MODULO + " = '" + tarefa.getCodModulo() + "', "
@@ -156,7 +156,7 @@ public class TarefaDAO extends CustomDAO<Tarefa> {
             tarefa.setCodigo(resultado.getInt(ChavePrimaria()));
             tarefa.setTitulo(resultado.getString(Consts.COL_TITULO));
             tarefa.setDescricao(resultado.getString(Consts.COL_DESCRICAO));
-            tarefa.setDicas(resultado.getString(Consts.COL_DICAS));
+            tarefa.setVideo(resultado.getString(Consts.COL_DICAS));
             tarefa.setPontosVale(resultado.getInt(Consts.COL_PONTOS_VALE));
             tarefa.setCodNivel(resultado.getInt(Consts.COL_COD_NIVEL));
             tarefa.setCodModulo(resultado.getInt(Consts.COL_COD_MODULO));

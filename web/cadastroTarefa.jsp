@@ -23,8 +23,8 @@
                 va = new Tarefa();
                 va.setTitulo("");
                 va.setDescricao("");
-                va.setDicas("");
-                va.setPontosVale(-1);
+                va.setVideo("");
+                va.setPontosVale(0);
                 va.setConcluida(false);
             }
         %>
@@ -41,6 +41,8 @@
                                 </div>
                             </div>
                         </div>
+                                
+                                
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group no-margin-hr">
@@ -52,11 +54,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group no-margin-hr">
-                                    <label class="control-label">Dicas</label>
-                                    <textarea type="text" name="dicas" class="form-control" rows="3"><%=va.getDicas()%></textarea>
+                                    <label class="control-label">Video</label>
+                                    <textarea type="text" name="dicas" class="form-control" rows="3"><%=va.getVideo()%></textarea>
                                 </div>
                             </div>
                         </div>
+                                
+                                                                
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group no-margin-hr">

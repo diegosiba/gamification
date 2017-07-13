@@ -14,6 +14,7 @@ public class Tarefa extends Custom {
     private String titulo;
     private String descricao;
     private String dicas;
+    private String video;
     private int pontosVale;
     private int codNivel;
     private int codModulo;
@@ -122,18 +123,21 @@ public class Tarefa extends Custom {
     }
 
     /**
-     * @return the dicas
+     * @return the video
      */
-    public String getDicas() {
+    public String getVideo() {
         return dicas;
     }
 
     /**
      * @param dicas the dicas to set
      */
-    public void setDicas(String dicas) {
+    public void setVideo(String dicas) {
         this.dicas = dicas;
     }
+    
+        
+    
 
     /**
      * @return the pontosVale

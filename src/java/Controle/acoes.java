@@ -24,13 +24,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 public class acoes extends HttpServlet {
 
+    private org.apache.log4j.Logger logger = Logger.getLogger(acoes.class.getName());
+     
     HttpServletRequest requisicao;
     HttpServletResponse resposta;
     String listarUsuarios = "listarUsuarios.jsp";
     String cadastroUsuario = "cadastroUsuario.jsp";
+    
 
     String listarPremios = "listarPremios.jsp";
     String cadastroPremio = "cadastroPremio.jsp";
@@ -52,6 +56,8 @@ public class acoes extends HttpServlet {
 
     String dashboard = "dashboard.jsp";
     String dashboardAluno = "dashboardAluno.jsp";
+    
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -212,6 +218,7 @@ public class acoes extends HttpServlet {
     // ##### USUÁRIOS
     public void autenticar() {
 
+          
         Usuario usuario = (Usuario) requisicao.getAttribute("usuario");
 
         // Atualiza o objeto de usuário.
@@ -220,6 +227,7 @@ public class acoes extends HttpServlet {
 
             // usuario validado: coloca seu nome na sessao
             HttpSession sessao = requisicao.getSession();
+            logger.info(usuario.getNome());
 
             // Salva o usuário na sessão
             sessao.setAttribute("usuario", usuario);
@@ -229,8 +237,10 @@ public class acoes extends HttpServlet {
 
             if (usuario.isAluno()) {
                 encaminharPagina(this.dashboardAluno);
+                logger.info("Acessou dash aluno");
             } else {
                 encaminharPagina(this.dashboard);
+                logger.info("Acessou dash do professor");
             }
         } else {
             requisicao.setAttribute("erro", "sem permissão");
@@ -253,6 +263,7 @@ public class acoes extends HttpServlet {
         if (new UsuarioDAO().gravarUsuario(usuario)) {
             requisicao.setAttribute("usuario", null);
             encaminharPagina(this.listarUsuarios);
+            logger.info("Acessou lista de usuários");
         }
     }
 
@@ -261,6 +272,8 @@ public class acoes extends HttpServlet {
         Usuario usuario = new UsuarioDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("usuario", usuario);
         encaminharPagina(this.cadastroUsuario);
+        logger.info("Acessou cadastro de usuários");
+                
     }
 
     private void excluirUsuario() {
@@ -276,6 +289,7 @@ public class acoes extends HttpServlet {
     // ##### TAREFAS
     private void novaTarefa() {
         encaminharPagina(this.cadastroTarefa);
+        logger.info("acessou o cadastro de tarefa");
     }
 
     public void gravarTarefa() {
@@ -283,6 +297,7 @@ public class acoes extends HttpServlet {
         if (new TarefaDAO().gravarTarefa(tarefa)) {
             requisicao.setAttribute("tarefa", null);
             encaminharPagina(this.listarTarefas);
+            logger.info("acessou lista de tarefas");
         }
     }
 
@@ -291,12 +306,14 @@ public class acoes extends HttpServlet {
         Tarefa tarefa = new TarefaDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("tarefa", tarefa);
         encaminharPagina(this.cadastroTarefa);
+        logger.info("Acessou cadastro de tarefas");
     }
 
     private void excluirTarefa() {
         String codigo = requisicao.getParameter(Consts.COL_CODIGO);
         if (new TarefaDAO().excluirTarefa(codigo)) {
             encaminharPagina(this.listarTarefas);
+            logger.info("Acessou lista de tarefas");
         } else {
             System.out.println("Erro ao excluir!");
         }
@@ -308,6 +325,7 @@ public class acoes extends HttpServlet {
         Tarefa tarefa = new TarefaDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("resposta", tarefa);
         encaminharPagina(this.cadastroResposta);
+        logger.info("Acessou cadastro de resposta");
     }
 
     private void gravarResposta() {
@@ -315,6 +333,7 @@ public class acoes extends HttpServlet {
         if (new TarefaDAO().gravarResposta(tarefa)) {
             requisicao.setAttribute("resposta", null);
             encaminharPagina(this.listarMinhasTarefas);
+            logger.info("Acessou lista de tarefas");
         }
     }
 
@@ -324,6 +343,7 @@ public class acoes extends HttpServlet {
         Tarefa tarefa = new TarefaDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("correcao", tarefa);
         encaminharPagina(this.cadastroCorrecao);
+        logger.info("Acessou cadastro de correção");
     }
 
     private void gravarAvaliacao() {
@@ -331,12 +351,14 @@ public class acoes extends HttpServlet {
         if (new TarefaDAO().gravarAvaliacao(tarefa)) {
             requisicao.setAttribute("avaliacao", null);
             encaminharPagina(this.listarTarefasCorrecao);
+            logger.info("Acessou tarefas correção");
         }
     }
 
     // ##### PREMIOS
     private void novoPremio() {
         encaminharPagina(this.cadastroPremio);
+        logger.info("Acessou cadastro premios");
     }
 
     public void gravarPremio() {
@@ -344,6 +366,8 @@ public class acoes extends HttpServlet {
         if (new PremioDAO().gravarPremio(premio)) {
             requisicao.setAttribute("premio", null);
             encaminharPagina(this.listarPremios);
+            logger.info("Acessou lista de premios");
+            
         }
     }
 
@@ -352,12 +376,14 @@ public class acoes extends HttpServlet {
         Premio premio = new PremioDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("premio", premio);
         encaminharPagina(this.cadastroPremio);
+        logger.info("Acessou cadastro premios");
     }
 
     private void excluirPremio() {
         String codigo = requisicao.getParameter(Consts.COL_CODIGO);
         if (new PremioDAO().excluirPremio(codigo)) {
             encaminharPagina(this.listarPremios);
+            logger.info("Acessou lista de premios");
         } else {
             System.out.println("Erro ao excluir!");
         }
@@ -366,6 +392,7 @@ public class acoes extends HttpServlet {
     // ##### NÍVEIS
     private void novoNivel() {
         encaminharPagina(this.cadastroNivel);
+        logger.info("Acessou cadastro de nivel");
     }
 
     public void gravarNivel() {
@@ -373,6 +400,7 @@ public class acoes extends HttpServlet {
         if (new NivelDAO().gravarNivel(nivel)) {
             requisicao.setAttribute("nivel", null);
             encaminharPagina(this.listarNiveis);
+            logger.info("Acessou lista de niveis");
         }
     }
 
@@ -381,12 +409,14 @@ public class acoes extends HttpServlet {
         Nivel nivel = new NivelDAO().buscarUm(Integer.valueOf(codigo));
         requisicao.setAttribute("nivel", nivel);
         encaminharPagina(this.cadastroNivel);
+        logger.info("Acessou cadastro de nivel");
     }
 
     private void excluirNivel() {
         String codigo = requisicao.getParameter(Consts.COL_CODIGO);
         if (new NivelDAO().excluirNivel(codigo)) {
             encaminharPagina(this.listarNiveis);
+            logger.info("Acessou lista de niveis ");
         } else {
             System.out.println("Erro ao excluir!");
         }
@@ -395,6 +425,7 @@ public class acoes extends HttpServlet {
     // ##### MÓDULOS
     private void novoModulo() {
         encaminharPagina(this.cadastroModulos);
+        
     }
 
     public void gravarModulo() {

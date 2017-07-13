@@ -43,6 +43,7 @@
                                     <textarea type="text" name="resposta" class="form-control" rows="6"><%=va.getResposta()%></textarea>
                                 </div>
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -63,81 +64,104 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Link Video</label>
+                                        <textarea type="text" name="dicas" disabled="" class="form-control" rows="3"><%=va.getVideo()%></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Pontuação</label>
+                                        <input type="number" name="pontosvale" disabled="" class="form-control" value="<%=va.getPontosVale()%>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Nível</label>
+                                        <select  name = "codnivel" disabled="" class="form-control">
+                                            <% ArrayList<Nivel> niveis = new NivelDAO().listarNiveis();
+                                                for (int i = 0; i < niveis.size(); i++) {
+                                                    Nivel nivel = niveis.get(i);
+                                            %>
+                                            <option value="<%=nivel.getCodigo()%>" 
+                                                    <% if (va.getCodNivel() == nivel.getCodigo()) {%>
+                                                    selected="selected"
+                                                    <%}%>>
+                                                <%=nivel.getNome()%> </option>
+                                                <% }%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Prêmio</label>
+                                        <select  name = "codpremio" disabled="" class="form-control">
+                                            <% ArrayList<Premio> premios = new PremioDAO().listarPremios();
+                                                for (int i = 0; i < premios.size(); i++) {
+                                                    Premio premio = premios.get(i);
+                                            %>
+                                            <option value="<%=premio.getCodigo()%>" 
+                                                    <% if (va.getCodPremio() == premio.getCodigo()) {%>
+                                                    selected="selected"
+                                                    <%}%>>
+                                                <%=premio.getNome()%> </option>
+                                                <% }%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Professor</label>
+                                        <select  name = "codprofessor" disabled="" class="form-control"> 
+                                            <% ArrayList<Usuario> professores = new UsuarioDAO().listarProfessores();
+                                                for (int i = 0; i < professores.size(); i++) {
+                                                    Usuario professor = professores.get(i);
+                                            %>
+                                            <option value="<%=professor.getCodigo()%>" 
+                                                    <% if (va.getCodProfessorCadastro() == professor.getCodigo()) {%>
+                                                    selected="selected"
+                                                    <%}%>>
+                                                <%=professor.getNome()%> </option>
+                                                <% }%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group no-margin-hr">
+                                        <label class="control-label">Exibir Video</label>
+
+
+                                                                            
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8mei6uVttho" frameborder="0" allowfullscreen></iframe>
+                                        
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group no-margin-hr">
-                                    <label class="control-label">Dicas</label>
-                                    <textarea type="text" name="dicas" disabled="" class="form-control" rows="3"><%=va.getDicas()%></textarea>
-                                </div>
-                            </div>
+                        <div class="panel-footer text-right">
+                            <a href="/Gamification/listarMinhasTarefas.jsp"><button class="btn btn-primary" type="button" name="voltar">Voltar</button></a>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group no-margin-hr">
-                                    <label class="control-label">Pontuação</label>
-                                    <input type="number" name="pontosvale" disabled="" class="form-control" value="<%=va.getPontosVale()%>">
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group no-margin-hr">
-                                    <label class="control-label">Nível</label>
-                                    <select  name = "codnivel" disabled="" class="form-control">
-                                        <% ArrayList<Nivel> niveis = new NivelDAO().listarNiveis();
-                                            for (int i = 0; i < niveis.size(); i++) {
-                                                Nivel nivel = niveis.get(i);
-                                        %>
-                                        <option value="<%=nivel.getCodigo()%>" 
-                                                <% if (va.getCodNivel() == nivel.getCodigo()) {%>
-                                                selected="selected"
-                                                <%}%>>
-                                            <%=nivel.getNome()%> </option>
-                                            <% }%>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group no-margin-hr">
-                                    <label class="control-label">Prêmio</label>
-                                    <select  name = "codpremio" disabled="" class="form-control">
-                                        <% ArrayList<Premio> premios = new PremioDAO().listarPremios();
-                                            for (int i = 0; i < premios.size(); i++) {
-                                                Premio premio = premios.get(i);
-                                        %>
-                                        <option value="<%=premio.getCodigo()%>" 
-                                                <% if (va.getCodPremio() == premio.getCodigo()) {%>
-                                                selected="selected"
-                                                <%}%>>
-                                            <%=premio.getNome()%> </option>
-                                            <% }%>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group no-margin-hr">
-                                    <label class="control-label">Professor</label>
-                                    <select  name = "codprofessor" disabled="" class="form-control"> 
-                                        <% ArrayList<Usuario> professores = new UsuarioDAO().listarProfessores();
-                                            for (int i = 0; i < professores.size(); i++) {
-                                                Usuario professor = professores.get(i);
-                                        %>
-                                        <option value="<%=professor.getCodigo()%>" 
-                                                <% if (va.getCodProfessorCadastro() == professor.getCodigo()) {%>
-                                                selected="selected"
-                                                <%}%>>
-                                            <%=professor.getNome()%> </option>
-                                            <% }%>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer text-right">
-                        <a href="/Gamification/listarMinhasTarefas.jsp"><button class="btn btn-primary" type="button" name="voltar">Voltar</button></a>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
                 </form>
             </div>
         </div>

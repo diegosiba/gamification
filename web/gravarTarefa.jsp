@@ -18,7 +18,7 @@
         va.setCodigo(Integer.parseInt(request.getParameter("codigo")));
         va.setTitulo(request.getParameter("titulo"));
         va.setDescricao(request.getParameter("descricao"));
-        va.setDicas(request.getParameter("dicas"));
+        va.setVideo(request.getParameter("dicas"));
         va.setPontosVale(Integer.parseInt(request.getParameter("pontosvale")));
         va.setCodNivel(Integer.parseInt(request.getParameter("codnivel")));
         va.setCodPremio(Integer.parseInt(request.getParameter("codpremio")));

@@ -1,13 +1,17 @@
 package DAO;
 
+
 import Modelo.Usuario;
 import Utils.Consts;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 
 public class UsuarioDAO extends CustomDAO<Usuario> {
 
+    public org.apache.log4j.Logger logger = Logger.getLogger(UsuarioDAO.class.getName());
+    
     @Override
     protected String Tabela() {
         return "usuarios";
@@ -21,7 +25,7 @@ public class UsuarioDAO extends CustomDAO<Usuario> {
     String sql = "";
 
     public Usuario autenticar(Usuario usuario) {
-
+        
         try {
             sql = "select * from " + this.Tabela()
                     + " where " + Consts.COL_EMAIL + " = '" + usuario.getEmail() + "'"
