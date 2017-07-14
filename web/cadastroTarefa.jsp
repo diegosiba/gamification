@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group no-margin-hr">
-                                    <label class="control-label">Video</label>
+                                    <label class="control-label">Link Video</label>
                                     <textarea type="text" name="dicas" class="form-control" rows="3"><%=va.getVideo()%></textarea>
                                 </div>
                             </div>

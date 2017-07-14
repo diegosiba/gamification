@@ -148,6 +148,17 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>
+                                                                
+                                                                
+                                                                    <li class="mm-dropdown">
+                                                                
+                                                                        <a href="webService.html"><i class="menu-icon fa fa-th"></i><span class="mm-text">WebService</span></a>
+                                                                        
+                                                                </li>
+                                                                
+                                                                
+                                                                
+                                                                
                                                                 <% }%>
                                                             </ul>
                                                         </div>

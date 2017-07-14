@@ -57,7 +57,7 @@ public class acoes extends HttpServlet {
     String dashboard = "dashboard.jsp";
     String dashboardAluno = "dashboardAluno.jsp";
     
-    
+    String consultaCEP = "consultaCEP.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -217,7 +217,6 @@ public class acoes extends HttpServlet {
 
     // ##### USUÁRIOS
     public void autenticar() {
-
           
         Usuario usuario = (Usuario) requisicao.getAttribute("usuario");
 
@@ -286,6 +285,10 @@ public class acoes extends HttpServlet {
         }
     }
 
+    private void buscaCEP(){
+        encaminharPagina(this.consultaCEP);
+    }
+    
     // ##### TAREFAS
     private void novaTarefa() {
         encaminharPagina(this.cadastroTarefa);

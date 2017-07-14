@@ -20,6 +20,7 @@
                 va = new Tarefa();
                 va.setTitulo("");
                 va.setDescricao("");
+                va.setVideo("");
                 va.setPontosVale(-1);
                 va.setConcluida(false);
             }
@@ -141,21 +142,12 @@
                                 <div class="col-sm-6">
                                     <div class="form-group no-margin-hr">
                                         <label class="control-label">Exibir Video</label>
-
-
-                                                                            
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8mei6uVttho" frameborder="0" allowfullscreen></iframe>
+                                  
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=va.getVideo()%>" frameborder="0" allowfullscreen></iframe>
                                         
-
-
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
 
                         </div>
                         <div class="panel-footer text-right">
